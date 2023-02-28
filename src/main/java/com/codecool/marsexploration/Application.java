@@ -1,11 +1,19 @@
 package com.codecool.marsexploration;
 
-import java.util.Random;
+import com.codecool.marsexploration.logic.MapGenerator;
+import com.codecool.marsexploration.logic.Maps.MapOfMountains;
+import com.codecool.marsexploration.logic.Maps.MapOfPits;
 
 public class Application {
+
     public static void main(String[] args) {
-        Random random = new Random();
-        System.out.println(random.nextInt(42));
-        System.out.println("New branch");
+        /*Instanzen für userInteraction */
+        String size = "small"; //later an enum which returns the logic of the userInteraction
+        MapOfMountains mapOfMountains = new MapOfMountains();
+        MapOfPits mapOfPits = new MapOfPits();
+        MapGenerator mapGenerator = new MapGenerator(size, mapOfMountains,mapOfPits);
+        mapGenerator.generateMap();
+        //String vom userInput "small"
+        //GeneratorMap -> Map und Pits
     }
 }

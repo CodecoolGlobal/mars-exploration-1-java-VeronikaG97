@@ -1,15 +1,15 @@
 package com.codecool.marsexploration.data;
 
 public enum Terrains {
-    MOUNTAIN("^"),
-    PITS("#");
+    MOUNTAIN('^'),
+    PITS('#');
 
-    String terrain;
-    Terrains(String terrain) {
+    char terrain;
+    Terrains(char terrain) {
         this.terrain=terrain;
     }
 
-    public String getTerrain() {
+    public char getTerrain() {
         return terrain;
     }
 }

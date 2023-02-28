@@ -1,15 +1,15 @@
 package com.codecool.marsexploration.data;
 
 public enum Resources {
-    MINERALS("*"),
-    WATER("~");
+    MINERALS('*'),
+    WATER('~');
 
-    String resources;
-    Resources(String resources) {
+    char resources;
+    Resources(char resources) {
         this.resources=resources;
     }
 
-    public String getResources() {
+    public char getResources() {
         return resources;
     }
 }

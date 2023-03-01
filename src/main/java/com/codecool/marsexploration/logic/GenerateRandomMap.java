@@ -12,8 +12,8 @@ public class GenerateRandomMap {
     private char[][] definedMap;
     private final Terrains terrain;
     private final Resources resource;
-    private final int RESOURCE_LIMIT;
-    private final int TERRAIN_LIMIT;
+    private final int RESOURCE_LIMIT=0;
+    private final int TERRAIN_LIMIT=0;
 
     public GenerateRandomMap(char[][] definedMap, Terrains terrain, Resources resource) {
         this.definedMap = definedMap;

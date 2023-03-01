@@ -5,4 +5,5 @@ import com.codecool.marsexploration.data.Terrains;
 
 public interface CreateMap {
     public char[][] createARandomMap(char[][] size, Terrains terrains, Resources resources);
+
 }

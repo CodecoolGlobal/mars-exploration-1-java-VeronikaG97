@@ -15,12 +15,10 @@ public class MapGenerator {
     }
 
     public void generateMap() {
-        //MountainMap generieren von der gewünschten Größe und i erwarte mir {{^,*,^,}}
-        //PitsMap generieren von der gewünschten Größe und i erwarte mir {{#,#,~,#}}
         mountainMapGenerator.createMountainsMap(size);
         pitsMapGenerator.createPitsMap(size);
         //Validate
-        //Map(Record)
-        //Write a file of complete Map
+        //Generate finished whole Map
+        //Write it to file
     }
 }

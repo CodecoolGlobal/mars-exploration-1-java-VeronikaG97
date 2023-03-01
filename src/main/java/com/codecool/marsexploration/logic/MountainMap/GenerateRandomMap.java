@@ -21,8 +21,8 @@ private final Resources resource;
 
         //Or maybe a record
         for(int i = 0; i < definedMap.length; i++) {
-            int randomIndex = new Random().nextInt(definedMap.length);
             for(int j=0; j<definedMap[i].length; j++) {
+                int randomIndex = new Random().nextInt(definedMap.length);
                 definedMap[i][randomIndex]= terrain.getTerrain();
             }
         }

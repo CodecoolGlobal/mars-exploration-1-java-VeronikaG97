@@ -19,14 +19,17 @@ private final Resources resource;
 
     public char[][] generateMap() {
 
-        //Or maybe a record
+        //[10][10]
         for(int i = 0; i < definedMap.length; i++) {
+            int randomIndexRow = new Random().nextInt(definedMap.length);
+            if(randomIndexRow%2==0)continue;
             for(int j=0; j<definedMap[i].length; j++) {
                 int randomIndex = new Random().nextInt(definedMap.length);
+                definedMap[i][j]='B';
                 definedMap[i][randomIndex]= terrain.getTerrain();
             }
         }
-       Arrays.stream(definedMap).forEach(System.out::println);
+        Arrays.stream(definedMap).forEach(System.out::println);
         return definedMap;
     }
     }

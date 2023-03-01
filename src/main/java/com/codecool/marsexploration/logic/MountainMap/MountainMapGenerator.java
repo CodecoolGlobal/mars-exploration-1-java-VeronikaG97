@@ -8,7 +8,7 @@ public class MountainMapGenerator implements CreateMap {
 
 
     public char[][] createMountainsMap(String size) {
-        char[][] small=new char[10][10];
+        char[][] small=new char[2][4];
         char[][]medium=new char[20][20];
         char[][]large = new char[30][30];
         switch (size) {

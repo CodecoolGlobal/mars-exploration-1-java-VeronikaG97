@@ -8,7 +8,7 @@ import com.codecool.marsexploration.logic.MountainMap.GenerateRandomMap;
 public class PitsMapGenerator implements CreateMap {
 
     public char[][] createPitsMap(String size) {
-        char[][] small=new char[5][5];
+        char[][] small=new char[4][4];
         char[][]medium=new char[15][15];
         switch (size) {
             case "small":  return createARandomMap(small,Terrains.PITS, Resources.WATER);

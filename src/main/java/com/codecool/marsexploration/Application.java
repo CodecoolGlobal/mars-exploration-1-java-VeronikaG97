@@ -1,8 +1,6 @@
 package com.codecool.marsexploration;
 
 import com.codecool.marsexploration.logic.MapGenerator;
-import com.codecool.marsexploration.logic.Maps.MapOfMountains;
-import com.codecool.marsexploration.logic.Maps.MapOfPits;
 import com.codecool.marsexploration.logic.MountainMap.MountainMapGenerator;
 import com.codecool.marsexploration.logic.PitsMap.PitsMapGenerator;
 

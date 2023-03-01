@@ -5,7 +5,7 @@ import com.codecool.marsexploration.data.Terrains;
 import com.codecool.marsexploration.logic.CreateMap;
 import com.codecool.marsexploration.logic.GenerateRandomMap;
 
-public class MountainMapGenerator implements CreateMap {
+public class MountainMapGenerator implements CreateMap{
     public char[][] createMountainsMap(String size) {
         char[][] small = new char[4][4];
         char[][] medium = new char[20][20];

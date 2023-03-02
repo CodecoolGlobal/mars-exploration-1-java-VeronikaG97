@@ -26,12 +26,13 @@ public class MapGenerator {
     public void generateMap() {
         List<MapElement> mountainElements = elementGenerator.createMountainsMap(size, MOUNTAIN, MINERALS);
         List<MapElement> pitElements = elementGenerator.createMountainsMap(size, PITS, WATER);
+        List<MapElement> emptyElements = elementGenerator.createARandomMap(mountainElements.size() * 10);
 
         List<MapElement> allMapElements = new ArrayList<>();
         allMapElements.addAll(mountainElements);
+        allMapElements.addAll(emptyElements);
         allMapElements.addAll(pitElements);
-        String userInput = "MEDIUM";
-        BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(userInput);
+        BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(size);
         char[][] bigMap = bigEmptyMapGenerator.getBigMap();
         BigMapAssembler bigMapAssembler = new BigMapAssembler(bigMap, allMapElements);
         char[][] finalReadyBigMap = bigMapAssembler.getBigMap();

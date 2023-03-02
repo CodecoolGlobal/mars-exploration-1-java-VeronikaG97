@@ -11,6 +11,7 @@ import com.codecool.marsexploration.logic.strategies.SizeStrategies;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ElementGenerator implements CreateMap {
@@ -86,5 +87,29 @@ public class ElementGenerator implements CreateMap {
             }
         }
         return notNull;
+    }
+
+    public List<MapElement> createARandomMap(int counter) {
+        List<MapElement> emptyMaps = new ArrayList<>();
+        while (counter > 0) {
+            char[][] map = generateRandomEmptyMap();
+            emptyMaps.add(new MapElement(map));
+            counter--;
+        }
+        return emptyMaps;
+    }
+
+    public char[][] generateRandomEmptyMap() {
+        int randomLimit = 6;
+        int arraySize = new Random().nextInt(randomLimit);
+
+        char[][] emptyElement = new char[arraySize][arraySize];
+
+        for (int i = 0; i < emptyElement.length; i++) {
+            for (int j = 0; j < emptyElement[0].length; j++) {
+                emptyElement[i][j] = '\u2002';
+            }
+        }
+        return emptyElement;
     }
 }

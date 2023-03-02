@@ -10,7 +10,6 @@ public class BigMapAssembler {
     private Queue<Character> elementQueue;
 
     public BigMapAssembler(char[][] bigMap, List<MapElement> mapElements) {
-        System.out.println("mapElements = " + mapElements.size());
         this.bigMap = bigMap;
         this.mapElements = mapElements;
         this.elementQueue = new LinkedList<>();
@@ -69,6 +68,7 @@ public class BigMapAssembler {
     }
 
     private char getNextChar() {
+        if (elementQueue.peek() == null) return ' ';
         return elementQueue.poll();
     }
 

@@ -48,6 +48,8 @@ public class GenerateRandomMap {
     }
 
 
+
+
     public void initialize() {
         for (int i = 0; i < definedMap.length; i++) {
             for (int j = 0; j < definedMap[i].length; j++) {

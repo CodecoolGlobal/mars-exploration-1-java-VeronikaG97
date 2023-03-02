@@ -1,6 +1,7 @@
 package com.codecool.marsexploration.logic;
 
 import com.codecool.marsexploration.data.MapElement;
+import com.codecool.marsexploration.io.FileWriter;
 import com.codecool.marsexploration.logic.MountainMap.MountainMapGenerator;
 import com.codecool.marsexploration.logic.PitsMap.PitsMapGenerator;
 import com.codecool.marsexploration.logic.bigMap.BigEmptyMapGenerator;
@@ -29,9 +30,9 @@ public class MapGenerator {
         allMapElements.addAll(mountainElements);
         allMapElements.addAll(pitElements);
 
-        String userInput = "MEDIUM";
+       // String userInput = "MEDIUM";
 
-        BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(userInput);
+        BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(size);
 
         char[][] bigMap = bigEmptyMapGenerator.getBigMap();
 
@@ -39,6 +40,9 @@ public class MapGenerator {
         BigMapAssembler bigMapAssembler = new BigMapAssembler(bigMap, allMapElements);
 
         char[][] finalReadyBigMap = bigMapAssembler.getBigMap();
+
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.write(finalReadyBigMap);
 
         for (int i = 0; i < finalReadyBigMap.length; i++) {
             for (int j = 0; j < finalReadyBigMap[0].length; j++) {

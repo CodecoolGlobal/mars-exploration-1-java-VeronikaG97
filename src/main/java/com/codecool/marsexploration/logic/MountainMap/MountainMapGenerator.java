@@ -19,11 +19,11 @@ public class MountainMapGenerator implements CreateMap{
         SizeStrategies sizeStrategies = new SizeStrategies();
         int counter = sizeStrategies.createCounter(size);
         switch (size) {
-            case "small":
+            case "SMALL":
                 return createARandomMap(small, Terrains.MOUNTAIN, Resources.MINERALS, counter);
-            case "medium":
+            case "MEDIUM":
                 return createARandomMap(medium, Terrains.MOUNTAIN, Resources.MINERALS, counter);
-            case "large":
+            case "LARGE":
                 return createARandomMap(large, Terrains.MOUNTAIN, Resources.MINERALS, counter);
             default:
                 System.out.println("Size does not exist");

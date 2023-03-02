@@ -19,9 +19,9 @@ public class PitsMapGenerator implements CreateMap {
         SizeStrategies sizeStrategies = new SizeStrategies();
         int counter = sizeStrategies.createCounter(size);
         switch (size) {
-            case "small":
+            case "SMALL":
                 return createARandomMap(small, Terrains.PITS, Resources.WATER, counter);
-            case "medium":
+            case "MEDIUM":
                 return createARandomMap(medium, Terrains.PITS, Resources.WATER, counter);
             default:
                 System.out.println("Size does not exist");

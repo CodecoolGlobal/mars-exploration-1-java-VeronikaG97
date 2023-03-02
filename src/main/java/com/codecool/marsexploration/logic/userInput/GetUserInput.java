@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GetUserInput {
     private String userInput;
-    public void getUserInput (){
+    public String getUserInput (){
         System.out.println(
                 "Please choose your map size:\n" +
                         "small\n" +
@@ -13,6 +13,6 @@ public class GetUserInput {
         Scanner scanner = new Scanner(System.in);
         userInput = scanner.next().toUpperCase();
         ValidateUserInput validateUserInput = new ValidateUserInput();
-        validateUserInput.validate(userInput);
+        return validateUserInput.validate(userInput);
     }
 }

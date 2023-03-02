@@ -1,29 +1,31 @@
 package com.codecool.marsexploration.logic;
 
 import com.codecool.marsexploration.data.MapElement;
-import com.codecool.marsexploration.logic.MountainMap.MountainMapGenerator;
-import com.codecool.marsexploration.logic.PitsMap.PitsMapGenerator;
+import com.codecool.marsexploration.logic.ElementGenerator.ElementGenerator;
 import com.codecool.marsexploration.logic.bigMap.BigEmptyMapGenerator;
 import com.codecool.marsexploration.logic.bigMap.BigMapAssembler;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.codecool.marsexploration.data.Resources.MINERALS;
+import static com.codecool.marsexploration.data.Resources.WATER;
+import static com.codecool.marsexploration.data.Terrains.MOUNTAIN;
+import static com.codecool.marsexploration.data.Terrains.PITS;
+
 public class MapGenerator {
     private final String size;
-    private final PitsMapGenerator pitsMapGenerator;
-    private final MountainMapGenerator mountainMapGenerator;
+    private final ElementGenerator elementGenerator;
     private String userInput;
 
-    public MapGenerator(String size, MountainMapGenerator mountainMapGenerator, PitsMapGenerator pitsMapGenerator) {
+    public MapGenerator(String size, ElementGenerator elementGenerator) {
         this.size = size;
-        this.mountainMapGenerator = mountainMapGenerator;
-        this.pitsMapGenerator = pitsMapGenerator;
+        this.elementGenerator = elementGenerator;
     }
 
     public void generateMap() {
-        List<MapElement> mountainElements = mountainMapGenerator.createMountainsMap(size);
-        List<MapElement> pitElements = pitsMapGenerator.createPitsMap(size);
+        List<MapElement> mountainElements = elementGenerator.createMountainsMap(size, MOUNTAIN, MINERALS);
+        List<MapElement> pitElements = elementGenerator.createMountainsMap(size, PITS, WATER);
 
         List<MapElement> allMapElements = new ArrayList<>();
         allMapElements.addAll(mountainElements);

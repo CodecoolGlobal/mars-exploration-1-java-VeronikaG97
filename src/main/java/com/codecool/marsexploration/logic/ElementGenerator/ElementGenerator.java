@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.logic.PitsMap;
+package com.codecool.marsexploration.logic.ElementGenerator;
 
 import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
@@ -9,26 +9,26 @@ import com.codecool.marsexploration.logic.Maps.CollectMapElements;
 import com.codecool.marsexploration.logic.strategies.SizeStrategies;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PitsMapGenerator implements CreateMap {
-
-    public List<MapElement> createPitsMap(String size) {
+public class ElementGenerator implements CreateMap {
+    public List<MapElement> createMountainsMap(String size, Terrains terrain, Resources mineral) {
         char[][] small = new char[5][5];
-        char[][] medium = new char[15][15];
+        char[][] medium = new char[10][10];
+        char[][] large = new char[15][15];
         SizeStrategies sizeStrategies = new SizeStrategies();
         int counter = sizeStrategies.createCounter(size);
         switch (size) {
             case "SMALL":
-                return createARandomMap(small, Terrains.PITS, Resources.WATER, counter);
+                return createARandomMap(small,terrain, mineral, counter);
             case "MEDIUM":
-                return createARandomMap(medium, Terrains.PITS, Resources.WATER, counter);
+                return createARandomMap(medium, terrain, mineral, counter);
+            case "LARGE":
+                return createARandomMap(large, terrain, mineral, counter);
             default:
-                System.out.println("");
+                System.out.println("Size does not exist");
         }
         List<MapElement> allTheMapElements = new ArrayList<>();
         MapElement map = new MapElement(new char[0][0]);
@@ -48,33 +48,33 @@ public class PitsMapGenerator implements CreateMap {
             while (checkIfMapIsEmpty(map)) {
                 map = generateRandomMap.generateMap();
             }
-
-            char[][] finalMapOfPits = deleteEmptyRows(map);
-            collectMapElements.saveAllMapElements(finalMapOfPits);
-
+            char[][] finalMapOfMountains = deleteEmptyRows(map);
+            collectMapElements.saveAllMapElements(finalMapOfMountains);
             counter--;
         }
 
-        List<MapElement> finalMapOfPits =  collectMapElements.getAllElements();
+        List<MapElement> finalListOfMapElements =  collectMapElements.getAllElements();
 
-        return finalMapOfPits;
+        return finalListOfMapElements;
     }
 
     private char[][] deleteEmptyRows(char[][] map) {
-        List<char[]> mapList=  Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
+        List<char[]> mapList = Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
         char[][] newMap = mapList.toArray(new char[][]{});
         return newMap;
 
     }
+
     private boolean isEmptyRow(char[] row) {
         for (char c : row) {
             char targetCharacter = ' ';
-            if(c != targetCharacter){
+            if (c != targetCharacter) {
                 return true;
             }
         }
         return false;
     }
+
     private boolean checkIfMapIsEmpty(char[][] map) {
         boolean notNull = true;
         for (char[] array : map) {

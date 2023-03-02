@@ -1,7 +1,6 @@
 package com.codecool.marsexploration.logic.userInput;
 
 import com.codecool.marsexploration.data.MapSize;
-
 public class ValidateUserInput {
     public String validate(String userInput) {
         GetUserInput getUserInput = new GetUserInput();

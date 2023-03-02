@@ -45,7 +45,6 @@ public class MountainMapGenerator implements CreateMap{
             while (checkIfMapIsEmpty(map)) {
                 map = generateRandomMap.generateMap();
             }
-
             collectMapElements.saveAllMapElements(map);
         }
         return collectMapElements.getAllElements();

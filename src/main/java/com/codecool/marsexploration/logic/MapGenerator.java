@@ -30,18 +30,15 @@ public class MapGenerator {
         List<MapElement> allMapElements = new ArrayList<>();
         allMapElements.addAll(mountainElements);
         allMapElements.addAll(pitElements);
-
         String userInput = "MEDIUM";
-
         BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(userInput);
-
         char[][] bigMap = bigEmptyMapGenerator.getBigMap();
-
-
         BigMapAssembler bigMapAssembler = new BigMapAssembler(bigMap, allMapElements);
-
         char[][] finalReadyBigMap = bigMapAssembler.getBigMap();
+        printMap(finalReadyBigMap);
+    }
 
+    private static void printMap(char[][] finalReadyBigMap) {
         for (int i = 0; i < finalReadyBigMap.length; i++) {
             for (int j = 0; j < finalReadyBigMap[0].length; j++) {
                 System.out.print(finalReadyBigMap[i][j]);

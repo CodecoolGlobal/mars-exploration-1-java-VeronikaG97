@@ -30,6 +30,7 @@ public class PitsMapGenerator implements CreateMap {
 
         while (checkIfMapIsEmpty(map)) {
             map = generateRandomMap.generateMap();
+            break;
         }
 
         return map;

@@ -39,6 +39,7 @@ public class MountainMapGenerator implements CreateMap{
             CollectMapElements collectMapElements = new CollectMapElements();
             collectMapElements.getMapElements(map);
         }
+
         return map;
     }
 

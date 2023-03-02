@@ -4,6 +4,7 @@ import com.codecool.marsexploration.data.Resources;
 import com.codecool.marsexploration.data.Terrains;
 import com.codecool.marsexploration.logic.CreateMap;
 import com.codecool.marsexploration.logic.GenerateRandomMap;
+import com.codecool.marsexploration.logic.Maps.CollectMapElements;
 
 public class MountainMapGenerator implements CreateMap{
     public char[][] createMountainsMap(String size) {
@@ -29,12 +30,15 @@ public class MountainMapGenerator implements CreateMap{
         GenerateRandomMap generateRandomMap = new GenerateRandomMap(size, terrains, resources);
 
         generateRandomMap.initialize();
-        char[][] map = generateRandomMap.generateMap();
+        while (counter != 0){
+            char[][] map = generateRandomMap.generateMap();
 
-        while (checkIfMapIsEmpty(map)) {
-            map = generateRandomMap.generateMap();
+            while (checkIfMapIsEmpty(map)) {
+                map = generateRandomMap.generateMap();
+            }
+            CollectMapElements collectMapElements = new CollectMapElements();
+            collectMapElements.getMapElements(map);
         }
-
         return map;
     }
 

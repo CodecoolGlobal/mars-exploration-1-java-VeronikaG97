@@ -1,18 +1,18 @@
 package com.codecool.marsexploration.logic;
 
-import com.codecool.marsexploration.data.Mountain;
+import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Pit;
 
 import java.util.List;
 
 public class Validator {
     private char[][] terrain;
-    private List<Mountain> mountainElements;
+    private List<MapElement> mapElementElements;
     private List<Pit> pitElements;
 
-    public Validator(char[][] terrain, List<Mountain> mountainElements, List<Pit> pitElements) {
+    public Validator(char[][] terrain, List<MapElement> mapElementElements, List<Pit> pitElements) {
         this.terrain = terrain;
-        this.mountainElements = mountainElements;
+        this.mapElementElements = mapElementElements;
         this.pitElements = pitElements;
     }
 

@@ -39,6 +39,16 @@ public class MapGenerator {
 
 
         BigMapAssembler bigMapAssembler = new BigMapAssembler(bigMap, allMapElements);
+
+        char[][] finalReadyBigMap = bigMapAssembler.getBigMap();
+
+        for (int i = 0; i < finalReadyBigMap.length; i++) {
+            for (int j = 0; j < finalReadyBigMap[0].length; j++) {
+                System.out.print(finalReadyBigMap[i][j]);
+            }
+            System.out.println();
+        }
+
         //Validate
         //Generate finished whole Map
         //Write it to file

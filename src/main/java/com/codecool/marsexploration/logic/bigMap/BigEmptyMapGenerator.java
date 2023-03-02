@@ -18,7 +18,15 @@ public class BigEmptyMapGenerator {
         }
     }
     public void generateBigMap(int bigMapWidth) {
-        this.bigMap = new char[bigMapWidth][bigMapWidth];
+        char[][] bigEmptyMap = new char[bigMapWidth][bigMapWidth];
+
+        for (int i = 0; i < bigEmptyMap.length; i++) {
+            for (int j = 0; j < bigEmptyMap[0].length; j++) {
+                bigEmptyMap[i][j] = ' ';
+            }
+        }
+
+        this.bigMap = bigEmptyMap;
     }
 
     public String getUserInput() {

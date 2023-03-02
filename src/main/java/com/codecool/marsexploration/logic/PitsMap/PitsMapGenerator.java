@@ -1,5 +1,6 @@
 package com.codecool.marsexploration.logic.PitsMap;
 
+import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
 import com.codecool.marsexploration.data.Terrains;
 import com.codecool.marsexploration.logic.CreateMap;
@@ -40,19 +41,27 @@ public class PitsMapGenerator implements CreateMap {
         GenerateRandomMap generateRandomMap = new GenerateRandomMap(size, terrains, resources);
         CollectMapElements collectMapElements = new CollectMapElements();
         generateRandomMap.initialize();
-        while (counter != 0){
+
+        while (counter > 0) {
             char[][] map = generateRandomMap.generateMap();
 
             while (checkIfMapIsEmpty(map)) {
                 map = generateRandomMap.generateMap();
             }
 
-            collectMapElements.saveAllMapElements(map);
+            char[][] finalMapOfPits = deleteEmptyRows(map);
+            collectMapElements.saveAllMapElements(finalMapOfPits);
+
+            counter--;
         }
-        return collectMapElements.getAllElements();
+
+        List<MapElement> finalMapOfPits =  collectMapElements.getAllElements();
+
+        return finalMapOfPits;
     }
+
     private char[][] deleteEmptyRows(char[][] map) {
-        System.out.println(map.length+ "Length of map");
+//        System.out.println(map.length+ "Length of map");
         List<char[]> mapList=  Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
         char[][] newMap = mapList.toArray(new char[][]{});
         return newMap;

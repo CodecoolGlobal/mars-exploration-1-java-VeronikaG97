@@ -2,11 +2,7 @@ package com.codecool.marsexploration.logic.bigMap;
 
 import com.codecool.marsexploration.data.MapElement;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class BigMapAssembler {
     private char[][] bigMap;
@@ -14,21 +10,25 @@ public class BigMapAssembler {
     private Queue<Character> elementQueue;
 
     public BigMapAssembler(char[][] bigMap, List<MapElement> mapElements) {
+        System.out.println("mapElements = " + mapElements.size());
         this.bigMap = bigMap;
-        this.mapElements = mapElements.stream()
-                .sorted(Comparator.comparing(e -> e.mapElement().length * e.mapElement()[0].length))
-                .collect(Collectors.toList());
+        this.mapElements = mapElements;
         this.elementQueue = new LinkedList<>();
         assemble();
     }
 
     public boolean assemble() {
+        Collections.shuffle(mapElements);
+
         boolean doAllElementFit = true;
+
         for (MapElement e : mapElements) {
             putElementCharsToQueue(e);
+        }
+
+        for (MapElement e : mapElements) {
             int elementHeight = e.mapElement().length;
-            int elementWidth = e.mapElement()[0].length;
-            boolean doesElementFit = isEnoughSpace(elementHeight, elementWidth);
+            boolean doesElementFit = isEnoughSpace(elementHeight, elementHeight);
             if (!doesElementFit) {
                 doAllElementFit = false;
                 break;
@@ -51,7 +51,7 @@ public class BigMapAssembler {
     private boolean isEnoughSpace(int rowIndex, int colIndex, int rectHeight, int recWidth) {
         for (int row = rowIndex; row < (rowIndex + rectHeight); row++) {
             for (int col = colIndex; col < (colIndex + recWidth); col++) {
-                if (bigMap[row][col] == ' ') {
+                if (bigMap[row][col] != ' ') {
                     return false;
                 }
                 bigMap[row][col] = getNextChar();
@@ -62,7 +62,7 @@ public class BigMapAssembler {
 
     private void putElementCharsToQueue(MapElement mapElement) {
         for (int i = 0; i < mapElement.mapElement().length; i++) {
-            for (int j = 0; j < mapElement.mapElement()[0].length; j++) {
+            for (int j = 0; j < mapElement.mapElement()[i].length; j++) {
                 elementQueue.offer(mapElement.mapElement()[i][j]);
             }
         }

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class MountainMapGenerator implements CreateMap {
     public List<MapElement> createMountainsMap(String size) {
-        char[][] small = new char[4][4];
+        char[][] small = new char[10][10];
         char[][] medium = new char[20][20];
         char[][] large = new char[30][30];
         SizeStrategies sizeStrategies = new SizeStrategies();

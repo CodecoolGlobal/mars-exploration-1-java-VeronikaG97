@@ -10,8 +10,7 @@ public class Application {
     public static void main(String[] args) {
         /*Instanzen für userInteraction */
         GetUserInput getUserInput = new GetUserInput();
-        getUserInput.getUserInput();
-        String size = "medium"; //later an enum which returns the logic of the userInteraction
+        String size = getUserInput.getUserInput();
         MountainMapGenerator mountainMapGenerator = new MountainMapGenerator();
         PitsMapGenerator pitsMapGenerator = new PitsMapGenerator();
         MapGenerator mapGenerator = new MapGenerator(size,mountainMapGenerator,pitsMapGenerator);

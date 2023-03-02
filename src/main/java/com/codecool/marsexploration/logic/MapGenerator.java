@@ -19,8 +19,6 @@ public class MapGenerator {
         this.size = size;
         this.mountainMapGenerator = mountainMapGenerator;
         this.pitsMapGenerator = pitsMapGenerator;
-//            this.userInput = userInput;
-
     }
 
     public void generateMap() {
@@ -48,9 +46,5 @@ public class MapGenerator {
             }
             System.out.println();
         }
-
-        //Validate
-        //Generate finished whole Map
-        //Write it to file
     }
 }

@@ -28,7 +28,7 @@ public class PitsMapGenerator implements CreateMap {
             case "MEDIUM":
                 return createARandomMap(medium, Terrains.PITS, Resources.WATER, counter);
             default:
-                System.out.println("Size does not exist");
+                System.out.println("");
         }
         List<MapElement> allTheMapElements = new ArrayList<>();
         MapElement map = new MapElement(new char[0][0]);
@@ -61,7 +61,6 @@ public class PitsMapGenerator implements CreateMap {
     }
 
     private char[][] deleteEmptyRows(char[][] map) {
-//        System.out.println(map.length+ "Length of map");
         List<char[]> mapList=  Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
         char[][] newMap = mapList.toArray(new char[][]{});
         return newMap;

@@ -44,7 +44,6 @@ public class GenerateRandomMap {
                 }
             }
         }
-//        Arrays.stream(definedMap).forEach(System.out::println);
         return definedMap;
     }
 

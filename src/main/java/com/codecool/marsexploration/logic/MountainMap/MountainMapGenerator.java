@@ -59,7 +59,6 @@ public class MountainMapGenerator implements CreateMap {
     }
 
     private char[][] deleteEmptyRows(char[][] map) {
-        System.out.println(map.length + "Length of map");
         List<char[]> mapList = Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
         char[][] newMap = mapList.toArray(new char[][]{});
         return newMap;

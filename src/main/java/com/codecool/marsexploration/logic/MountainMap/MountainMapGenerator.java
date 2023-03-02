@@ -1,5 +1,6 @@
 package com.codecool.marsexploration.logic.MountainMap;
 
+import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
 import com.codecool.marsexploration.data.Terrains;
 import com.codecool.marsexploration.logic.CreateMap;
@@ -8,14 +9,11 @@ import com.codecool.marsexploration.logic.Maps.CollectMapElements;
 import com.codecool.marsexploration.logic.strategies.SizeStrategies;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MountainMapGenerator implements CreateMap{
+public class MountainMapGenerator implements CreateMap {
     public List<MapElement> createMountainsMap(String size) {
         char[][] small = new char[4][4];
         char[][] medium = new char[20][20];
@@ -41,33 +39,39 @@ public class MountainMapGenerator implements CreateMap{
     @Override
     public List<MapElement> createARandomMap(char[][] size, Terrains terrains, Resources resources, int counter) {
         GenerateRandomMap generateRandomMap = new GenerateRandomMap(size, terrains, resources);
-
+        CollectMapElements collectMapElements = new CollectMapElements();
         generateRandomMap.initialize();
-        while (counter != 0){
+
+        while (counter > 0) {
             char[][] map = generateRandomMap.generateMap();
 
             while (checkIfMapIsEmpty(map)) {
                 map = generateRandomMap.generateMap();
             }
-            collectMapElements.saveAllMapElements(map);
+            char[][] finalMapOfMountains = deleteEmptyRows(map);
+            collectMapElements.saveAllMapElements(finalMapOfMountains);
+            counter--;
         }
-        char[][] finalMapOfMountains = deleteEmptyRows(map);
+
+        List<MapElement> finalMapOfMountains =  collectMapElements.getAllElements();
+
         return finalMapOfMountains;
     }
 
     private char[][] deleteEmptyRows(char[][] map) {
-        System.out.println(map.length+ "Length of map");
-        List<char[]> mapList=  Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
+        System.out.println(map.length + "Length of map");
+        List<char[]> mapList = Arrays.stream(map).filter(row -> isEmptyRow(row)).collect(Collectors.toList());
         char[][] newMap = mapList.toArray(new char[][]{});
-       return newMap;
+        return newMap;
 
     }
+
     private boolean isEmptyRow(char[] row) {
         for (char c : row) {
-           char targetCharacter = ' ';
-           if(c != targetCharacter){
-               return true;
-           }
+            char targetCharacter = ' ';
+            if (c != targetCharacter) {
+                return true;
+            }
         }
         return false;
     }

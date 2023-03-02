@@ -4,7 +4,7 @@ import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.logic.MountainMap.MountainMapGenerator;
 import com.codecool.marsexploration.logic.PitsMap.PitsMapGenerator;
 import com.codecool.marsexploration.logic.bigMap.BigEmptyMapGenerator;
-import com.codecool.marsexploration.logic.bigMap.Validator;
+import com.codecool.marsexploration.logic.bigMap.BigMapAssembler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,17 @@ public class MapGenerator {
         char[][] bigMap = bigEmptyMapGenerator.getBigMap();
 
 
-        Validator validator = new Validator(bigMap, allMapElements);
+        BigMapAssembler bigMapAssembler = new BigMapAssembler(bigMap, allMapElements);
+
+        char[][] finalReadyBigMap = bigMapAssembler.getBigMap();
+
+        for (int i = 0; i < finalReadyBigMap.length; i++) {
+            for (int j = 0; j < finalReadyBigMap[0].length; j++) {
+                System.out.print(finalReadyBigMap[i][j]);
+            }
+            System.out.println();
+        }
+
         //Validate
         //Generate finished whole Map
         //Write it to file

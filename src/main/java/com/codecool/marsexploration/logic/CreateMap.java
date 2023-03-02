@@ -7,6 +7,7 @@ import com.codecool.marsexploration.data.Terrains;
 import java.util.List;
 
 public interface CreateMap {
+
     public List<MapElement> createARandomMap(char[][] size, Terrains terrains, Resources resources, int counter);
 
 }

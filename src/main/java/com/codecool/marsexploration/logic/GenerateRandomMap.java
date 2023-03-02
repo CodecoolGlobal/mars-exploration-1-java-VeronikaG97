@@ -21,7 +21,7 @@ public class GenerateRandomMap {
 
     public char[][] generateMap() {
         int RESOURCE_LIMIT=2;
-        int TERRAIN_LIMIT = Math.round(definedMap.length/2);
+        int TERRAIN_LIMIT = Math.round(definedMap.length/2 - 2);
         int countResources;
         int countTerrains;
 
@@ -48,10 +48,11 @@ public class GenerateRandomMap {
                 }
             }
         }
-        Arrays.stream(definedMap).forEach(System.out::println);
+        //Arrays.stream(definedMap).forEach(System.out::println);
         System.out.println("END");
         return definedMap;
     }
+
 
     public void initialize() {
         for (int i = 0; i < definedMap.length; i++) {

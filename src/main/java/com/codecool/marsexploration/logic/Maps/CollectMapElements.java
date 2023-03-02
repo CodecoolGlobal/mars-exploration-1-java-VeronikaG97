@@ -7,12 +7,15 @@ import java.util.List;
 
 public class CollectMapElements {
     List<MapElement> allElements = new ArrayList<>();
-    public List<MapElement> getMapElements(char[][] map){
+    public void saveAllMapElements(char[][] map){
         setMapElement(new MapElement(map));
-        return allElements;
     }
 
     public void setMapElement(MapElement mapElement) {
         this.allElements.add(mapElement);
+    }
+
+    public List<MapElement> getAllElements() {
+        return allElements;
     }
 }

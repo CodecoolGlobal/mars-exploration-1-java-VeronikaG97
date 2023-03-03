@@ -22,7 +22,7 @@ public class GenerateRandomMap {
 
     public char[][] generateMap() {
         int RESOURCE_LIMIT = 2;
-         int TERRAIN_LIMIT = 5;
+        int TERRAIN_LIMIT = (int) (Math.random() * definedMap.length +1);
         int countResources;
         int countTerrains;
         for (int i = 0; i < definedMap.length; i++) {
@@ -53,7 +53,7 @@ public class GenerateRandomMap {
     public void initialize() {
         for (int i = 0; i < definedMap.length; i++) {
             for (int j = 0; j < definedMap[i].length; j++) {
-                definedMap[i][j] = ' ';
+                definedMap[i][j] = '\u0020';
             }
         }
     }

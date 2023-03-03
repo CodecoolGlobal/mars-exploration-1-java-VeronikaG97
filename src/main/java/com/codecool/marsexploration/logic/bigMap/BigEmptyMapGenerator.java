@@ -22,7 +22,7 @@ public class BigEmptyMapGenerator {
 
         for (int i = 0; i < bigEmptyMap.length; i++) {
             for (int j = 0; j < bigEmptyMap[0].length; j++) {
-                bigEmptyMap[i][j] = ' ';
+                bigEmptyMap[i][j] = '\u0020';
             }
         }
 

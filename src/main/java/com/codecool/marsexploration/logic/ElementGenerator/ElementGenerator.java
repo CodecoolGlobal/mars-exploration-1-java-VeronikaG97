@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.logic.ElementGenerator;
+package com.codecool.marsexploration.logic.MountainMap;
 
 import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
@@ -68,7 +68,7 @@ public class ElementGenerator implements CreateMap {
 
     private boolean isEmptyRow(char[] row) {
         for (char c : row) {
-            char targetCharacter = ' ';
+            char targetCharacter = '\u0020';
             if (c != targetCharacter) {
                 return true;
             }
@@ -80,7 +80,7 @@ public class ElementGenerator implements CreateMap {
         boolean notNull = true;
         for (char[] array : map) {
             for (char c : array) {
-                if (c != ' ') {
+                if (c != '\u0020') {
                     notNull = false;
                     break;
                 }
@@ -106,8 +106,8 @@ public class ElementGenerator implements CreateMap {
         char[][] emptyElement = new char[arraySize][arraySize];
 
         for (int i = 0; i < emptyElement.length; i++) {
-            for (int j = 0; j < emptyElement[0].length; j++) {
-                emptyElement[i][j] = '\u2002';
+            for (int j = 0; j < emptyElement[i].length; j++) {
+                emptyElement[i][j] = '\t';
             }
         }
         return emptyElement;

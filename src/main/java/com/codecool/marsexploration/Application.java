@@ -1,7 +1,7 @@
 package com.codecool.marsexploration;
 
 import com.codecool.marsexploration.logic.MapGenerator;
-import com.codecool.marsexploration.logic.ElementGenerator.ElementGenerator;
+import com.codecool.marsexploration.logic.MountainMap.ElementGenerator;
 import com.codecool.marsexploration.logic.userInput.GetUserInput;
 
 public class Application {

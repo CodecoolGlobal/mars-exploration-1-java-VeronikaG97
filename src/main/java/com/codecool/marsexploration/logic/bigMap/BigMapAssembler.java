@@ -50,7 +50,7 @@ public class BigMapAssembler {
     private boolean isEnoughSpace(int rowIndex, int colIndex, int rectHeight, int recWidth) {
         for (int row = rowIndex; row < (rowIndex + rectHeight); row++) {
             for (int col = colIndex; col < (colIndex + recWidth); col++) {
-                if (bigMap[row][col] != ' ') {
+                if (bigMap[row][col] != '\u0020') {
                     return false;
                 }
                 bigMap[row][col] = getNextChar();
@@ -68,7 +68,7 @@ public class BigMapAssembler {
     }
 
     private char getNextChar() {
-        if (elementQueue.peek() == null) return ' ';
+        if (elementQueue.peek() == null) return '\u0020';
         return elementQueue.poll();
     }
 

@@ -3,18 +3,15 @@ package com.codecool.marsexploration.logic;
 import com.codecool.marsexploration.data.Resources;
 import com.codecool.marsexploration.data.Terrains;
 
-import java.util.Arrays;
 import java.util.Random;
 
 
-public class GenerateRandomMap {
+public class GenerateRandomSmallMap {
     private char[][] definedMap;
     private final Terrains terrain;
     private final Resources resource;
 
-
-
-    public GenerateRandomMap(char[][] definedMap, Terrains terrain, Resources resource) {
+    public GenerateRandomSmallMap(char[][] definedMap, Terrains terrain, Resources resource) {
         this.definedMap = definedMap;
         this.terrain = terrain;
         this.resource = resource;
@@ -46,9 +43,6 @@ public class GenerateRandomMap {
         }
         return definedMap;
     }
-
-
-
 
     public void initialize() {
         for (int i = 0; i < definedMap.length; i++) {

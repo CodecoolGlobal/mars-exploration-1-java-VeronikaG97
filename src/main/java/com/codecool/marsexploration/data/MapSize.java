@@ -6,17 +6,17 @@ public enum MapSize {
     LARGE(20, 8),
     ;
     int size;
-    int cntRessourceCharacter;
+    int resourceLimit;
     MapSize(int size, int cntRessourceCharacter) {
         this.size = size;
-        this.cntRessourceCharacter = cntRessourceCharacter;
+        this.resourceLimit = cntRessourceCharacter;
     }
 
     public int getSize() {
         return size;
     }
 
-    public int getCntRessourceCharacter() {
-        return cntRessourceCharacter;
+    public int getResourceLimit() {
+        return resourceLimit;
     }
 }

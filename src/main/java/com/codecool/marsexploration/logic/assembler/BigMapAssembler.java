@@ -1,8 +1,11 @@
-package com.codecool.marsexploration.logic.bigMap;
+package com.codecool.marsexploration.logic.assembler;
 
 import com.codecool.marsexploration.data.MapElement;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class BigMapAssembler {
     private char[][] bigMap;
@@ -13,21 +16,17 @@ public class BigMapAssembler {
         this.bigMap = bigMap;
         this.mapElements = mapElements;
         this.elementQueue = new LinkedList<>();
-        //TODO: Call seperately
-        assemble();
     }
 
-    public boolean assemble() {
+    public void assemble() {
         Collections.shuffle(mapElements);
         queueCharacters();
-        //TODO: Single response principle - call below function seperately
-        return checkEnoughSpace();
     }
 
-    private boolean checkEnoughSpace() {
+    public boolean checkEnoughSpace() {
         return mapElements.stream()
-                .filter(mapElement->!isEnoughSpace(mapElement.mapElement().length, mapElement.mapElement().length))
-                .count() == 0;
+                       .filter(mapElement -> !isEnoughSpace(mapElement.mapElement().length, mapElement.mapElement().length))
+                       .count() == 0;
     }
 
     private void queueCharacters() {

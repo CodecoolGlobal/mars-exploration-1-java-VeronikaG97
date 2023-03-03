@@ -2,13 +2,16 @@ package com.codecool.marsexploration;
 
 import com.codecool.marsexploration.data.Configuration;
 import com.codecool.marsexploration.data.MapSize;
-import com.codecool.marsexploration.data.Resources;
-import com.codecool.marsexploration.data.Terrains;
-import com.codecool.marsexploration.logic.ElementGenerator.ElementGenerator;
 import com.codecool.marsexploration.logic.MapGenerator;
+import com.codecool.marsexploration.logic.generators.BigEmptyMapGenerator;
 import com.codecool.marsexploration.logic.userInput.GetUserInput;
 import com.codecool.marsexploration.logic.userInput.InputPrompter;
 import com.codecool.marsexploration.logic.userInput.ValidateUserInput;
+
+import static com.codecool.marsexploration.data.Resources.MINERALS;
+import static com.codecool.marsexploration.data.Resources.WATER;
+import static com.codecool.marsexploration.data.Terrains.MOUNTAIN;
+import static com.codecool.marsexploration.data.Terrains.PITS;
 
 public class Application {
 
@@ -18,14 +21,21 @@ public class Application {
         ValidateUserInput validateUserInput = new ValidateUserInput();
 
         InputPrompter inputPrompter = new InputPrompter();
-        inputPrompter.prompt(strUserInput,validateUserInput, userInput);
-        int iSize = MapSize.valueOf(strUserInput).getSize();
-        int cntRessourceCharacter = MapSize.valueOf(strUserInput).getCntRessourceCharacter();
-        Configuration configurationMountain = new Configuration(iSize,cntRessourceCharacter, Terrains.MOUNTAIN, Resources.MINERALS);
-        Configuration configurationPits = new Configuration(iSize,cntRessourceCharacter, Terrains.PITS, Resources.WATER);
+        inputPrompter.prompt(strUserInput, validateUserInput, userInput);
 
-        ElementGenerator elementGenerator = new ElementGenerator();
-        MapGenerator mapGenerator = new MapGenerator(elementGenerator,configurationMountain,configurationPits);
+        final int FAT_MAP_SIZE = MapSize.valueOf(strUserInput).getSize();
+        final int RESOURCE_LIMIT = MapSize.valueOf(strUserInput).getResourceLimit();
+//        final int TERRAIN_LIMIT = Math.round(FAT_MAP_SIZE / 2 - 2);
+        final int TERRAIN_LIMIT = 5;
+
+        Configuration configurationMountain = new Configuration(FAT_MAP_SIZE, RESOURCE_LIMIT, TERRAIN_LIMIT, MOUNTAIN, MINERALS);
+        Configuration configurationPits = new Configuration(FAT_MAP_SIZE, RESOURCE_LIMIT, TERRAIN_LIMIT, PITS, WATER);
+
+        BigEmptyMapGenerator bigEmptyMapGenerator = new BigEmptyMapGenerator(FAT_MAP_SIZE);
+        bigEmptyMapGenerator.generateBigMap();
+
+        MapGenerator mapGenerator = new MapGenerator(configurationMountain, configurationPits, bigEmptyMapGenerator);
+        mapGenerator.generateEmptyBigFatMap();
         mapGenerator.generateMap();
     }
 }

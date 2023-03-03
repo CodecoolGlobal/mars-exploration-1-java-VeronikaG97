@@ -5,7 +5,7 @@ import com.codecool.marsexploration.data.MapElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollectMapElements {
+public class SmallMapCollector {
     List<MapElement> allElements = new ArrayList<>();
     public void saveAllMapElements(char[][] map){
         setMapElement(new MapElement(map));
@@ -14,7 +14,6 @@ public class CollectMapElements {
     public void setMapElement(MapElement mapElement) {
         this.allElements.add(mapElement);
     }
-
     public List<MapElement> getAllElements() {
         return allElements;
     }

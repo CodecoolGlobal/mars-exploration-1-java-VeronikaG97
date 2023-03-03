@@ -1,5 +1,6 @@
 package com.codecool.marsexploration.logic.ElementGenerator;
 
+import com.codecool.marsexploration.data.Configuration;
 import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
 import com.codecool.marsexploration.data.Terrains;
@@ -15,15 +16,24 @@ import java.util.stream.Collectors;
 
 public class ElementGenerator implements CreateMap {
 
-    //TODO: create object/class for parameters
-    public List<MapElement> createMountainsMap(int size, int counter, Terrains terrain, Resources mineral) {
+   /* public List<MapElement> createElementMap(Configuration configuration) {
+        int size = configuration.size();
+        Terrains terrain = configuration.terrain();
+        Resources resources = configuration.ressource();
+        int counter = configuration.counter();
         char[][] mapElements = new char[size][size];
-        return createARandomMap(mapElements, terrain, mineral, counter);
-    }
+        return createARandomMap(mapElements, terrain, resources, counter);
+    }*/
 
     @Override
-    public List<MapElement> createARandomMap(char[][] size, Terrains terrains, Resources resources, int counter) {
-        GenerateRandomMap generateRandomMap = new GenerateRandomMap(size, terrains, resources);
+    public List<MapElement> createARandomMap(Configuration configuration) {
+//char[][] size, Terrains terrains, Resources resources, int counter
+        int size = configuration.size();
+        Terrains terrain = configuration.terrain();
+        Resources resources = configuration.ressource();
+        int counter = configuration.counter();
+        char[][] mapElements = new char[size][size];
+        GenerateRandomMap generateRandomMap = new GenerateRandomMap(mapElements, terrain, resources);
         CollectMapElements collectMapElements = new CollectMapElements();
         generateRandomMap.initialize();
 
@@ -73,7 +83,7 @@ public class ElementGenerator implements CreateMap {
         return notNull;
     }
 
-    public List<MapElement> createARandomMap(int counter) {
+    public List<MapElement> createRandomEmptyMap(int counter) {
         List<MapElement> emptyMaps = new ArrayList<>();
         while (counter > 0) {
             char[][] map = generateRandomEmptyMap();

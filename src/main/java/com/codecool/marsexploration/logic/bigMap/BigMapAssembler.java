@@ -13,27 +13,27 @@ public class BigMapAssembler {
         this.bigMap = bigMap;
         this.mapElements = mapElements;
         this.elementQueue = new LinkedList<>();
+        //TODO: Call seperately
         assemble();
     }
 
     public boolean assemble() {
         Collections.shuffle(mapElements);
+        queueCharacters();
+        //TODO: Single response principle - call below function seperately
+        return checkEnoughSpace();
+    }
 
-        boolean doAllElementFit = true;
+    private boolean checkEnoughSpace() {
+        return mapElements.stream()
+                .filter(mapElement->!isEnoughSpace(mapElement.mapElement().length, mapElement.mapElement().length))
+                .count() == 0;
+    }
 
+    private void queueCharacters() {
         for (MapElement e : mapElements) {
             putElementCharsToQueue(e);
         }
-
-        for (MapElement e : mapElements) {
-            int elementHeight = e.mapElement().length;
-            boolean doesElementFit = isEnoughSpace(elementHeight, elementHeight);
-            if (!doesElementFit) {
-                doAllElementFit = false;
-                break;
-            }
-        }
-        return doAllElementFit;
     }
 
     private boolean isEnoughSpace(int rectHeight, int recWidth) {

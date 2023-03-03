@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.logic.MountainMap;
+package com.codecool.marsexploration.logic.ElementGenerator;
 
 import com.codecool.marsexploration.data.MapElement;
 import com.codecool.marsexploration.data.Resources;
@@ -6,7 +6,6 @@ import com.codecool.marsexploration.data.Terrains;
 import com.codecool.marsexploration.logic.CreateMap;
 import com.codecool.marsexploration.logic.GenerateRandomMap;
 import com.codecool.marsexploration.logic.Maps.CollectMapElements;
-import com.codecool.marsexploration.logic.strategies.SizeStrategies;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,26 +14,11 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ElementGenerator implements CreateMap {
-    public List<MapElement> createMountainsMap(String size, Terrains terrain, Resources mineral) {
-        char[][] small = new char[5][5];
-        char[][] medium = new char[10][10];
-        char[][] large = new char[15][15];
-        SizeStrategies sizeStrategies = new SizeStrategies();
-        int counter = sizeStrategies.createCounter(size);
-        switch (size) {
-            case "SMALL":
-                return createARandomMap(small,terrain, mineral, counter);
-            case "MEDIUM":
-                return createARandomMap(medium, terrain, mineral, counter);
-            case "LARGE":
-                return createARandomMap(large, terrain, mineral, counter);
-            default:
-                System.out.println("Size does not exist");
-        }
-        List<MapElement> allTheMapElements = new ArrayList<>();
-        MapElement map = new MapElement(new char[0][0]);
-        allTheMapElements.add(map);
-        return allTheMapElements;
+
+    //TODO: create object/class for parameters
+    public List<MapElement> createMountainsMap(int size, int counter, Terrains terrain, Resources mineral) {
+        char[][] mapElements = new char[size][size];
+        return createARandomMap(mapElements, terrain, mineral, counter);
     }
 
     @Override

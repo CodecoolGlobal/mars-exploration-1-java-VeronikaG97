@@ -1,7 +1,8 @@
 package com.codecool.marsexploration.logic.generators;
 
+import java.util.Arrays;
+
 public class BigEmptyMapGenerator {
-//    private String userInput;
     private char[][] bigMap;
     private final int size;
     public BigEmptyMapGenerator(int size) {
@@ -10,11 +11,7 @@ public class BigEmptyMapGenerator {
 
     public void generateBigMap() {
         char[][] bigEmptyMap = new char[size][size];
-        for (int i = 0; i < bigEmptyMap.length; i++) {
-            for (int j = 0; j < bigEmptyMap[0].length; j++) {
-                bigEmptyMap[i][j] = '\u0020';
-            }
-        }
+        Arrays.stream(bigEmptyMap).forEach(row -> Arrays.fill(row, '0'));
         this.bigMap = bigEmptyMap;
     }
 

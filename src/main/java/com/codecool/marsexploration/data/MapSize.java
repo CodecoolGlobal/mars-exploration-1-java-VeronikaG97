@@ -1,22 +1,30 @@
 package com.codecool.marsexploration.data;
 
 public enum MapSize {
-    SMALL(10, 4),
-    MEDIUM(15, 6),
-    LARGE(20, 8),
-    ;
-    int size;
-    int resourceLimit;
-    MapSize(int size, int cntRessourceCharacter) {
-        this.size = size;
-        this.resourceLimit = cntRessourceCharacter;
+    SMALL(12, 4, 3),
+    MEDIUM(24, 4, 12),
+    LARGE(48, 4, 48);
+
+    int bigMapSize;
+    int smallMapSize;
+    int numberOfSmallMaps;
+
+    MapSize(int bigMapSize, int smallMapSize, int numberOfSmallMaps) {
+        this.bigMapSize = bigMapSize;
+        this.smallMapSize = smallMapSize;
+        this.numberOfSmallMaps = numberOfSmallMaps;
+    }
+    public int getBigMapSize() {
+        return bigMapSize;
     }
 
-    public int getSize() {
-        return size;
+    public int getSmallMapSize() {
+        return smallMapSize;
     }
 
-    public int getResourceLimit() {
-        return resourceLimit;
+    public int getNumberOfSmallMaps() {
+        return numberOfSmallMaps;
     }
+
+
 }

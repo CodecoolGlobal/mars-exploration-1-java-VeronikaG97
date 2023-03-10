@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Queue;
 
 public class BigMapAssembler {
-    private char[][] bigMap;
-    private List<MapElement> mapElements;
-    private Queue<Character> elementQueue;
+    private final char[][] bigMap;
+    private final List<MapElement> mapElements;
+    private final Queue<Character> elementQueue;
 
     public BigMapAssembler(char[][] bigMap, List<MapElement> mapElements) {
         this.bigMap = bigMap;
@@ -21,13 +21,14 @@ public class BigMapAssembler {
     public void assemble() {
         Collections.shuffle(mapElements);
         queueCharacters();
+        placeSmallArraysIntoBigArray();
     }
 
-    public boolean checkEnoughSpace() {
-        return mapElements.stream()
-                       .filter(mapElement -> !isEnoughSpace(mapElement.mapElement().length, mapElement.mapElement().length))
-                       .count() == 0;
+    private void placeSmallArraysIntoBigArray() {
+        mapElements
+                .forEach(e -> isEnoughSpace(e.mapElement().length, e.mapElement().length));
     }
+
 
     private void queueCharacters() {
         for (MapElement e : mapElements) {
@@ -49,7 +50,7 @@ public class BigMapAssembler {
     private boolean isEnoughSpace(int rowIndex, int colIndex, int rectHeight, int recWidth) {
         for (int row = rowIndex; row < (rowIndex + rectHeight); row++) {
             for (int col = colIndex; col < (colIndex + recWidth); col++) {
-                if (bigMap[row][col] != '\u0020') {
+                if (bigMap[row][col] != '0') {
                     return false;
                 }
                 bigMap[row][col] = getNextChar();
@@ -67,8 +68,9 @@ public class BigMapAssembler {
     }
 
     private char getNextChar() {
-        if (elementQueue.peek() == null) return '\u0020';
-        return elementQueue.poll();
+        if (elementQueue.peek() != null)
+            return elementQueue.poll();
+        throw new RuntimeException("Queue is empty");
     }
 
     public char[][] getBigMap() {

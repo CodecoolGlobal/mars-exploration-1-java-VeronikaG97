@@ -5,11 +5,12 @@ public enum Resources {
     WATER('~');
 
     char resources;
+
     Resources(char resources) {
-        this.resources=resources;
+        this.resources = resources;
     }
 
-    public char getResources() {
+    public char getResource() {
         return resources;
     }
 }

@@ -6,6 +6,6 @@ import com.codecool.marsexploration.data.MapElement;
 import java.util.List;
 
 public interface CreateMap {
-    List<MapElement> createRandomSmallMap(Configuration configuration);
-    List<MapElement> createRandomSmallEmptyMap(int count);
+    List<MapElement> createSmallRandomMap(Configuration configuration);
+    List<MapElement> createSmallEmptyMap(int numberOfSmallEmptyMap, int size);
 }

@@ -19,18 +19,12 @@ public class FileWriter {
     private void doWrite(char[][] finalBigMap) throws IOException {
         BufferedWriter fileWriter = new BufferedWriter(new java.io.FileWriter("src/main/resources/MarsMap.txt"));
         for (int i = 0; i < finalBigMap.length; i++) {
-            for (int i1 = 0; i1 < finalBigMap[0].length; i1++) {
-                fileWriter.write(finalBigMap[i][i1]);
+            for (int j = 0; j < finalBigMap[0].length; j++) {
+                fileWriter.write(finalBigMap[i][j]);
             }
             fileWriter.write("\n");
         }
         fileWriter.close();
-      //CODE REVIEW QUESTION HOW TO WRITE A FILE WITH StandardOpenOption
-       /* Files.write(Paths.get("src/main/resources/map.txt"),
-                finishedMap.getBytes(),
-                StandardOpenOption.CREATE,
-                StandardOpenOption.WRITE
-        );*/
         System.out.println("Saved the map in: MarsMap.txt");
     }
 

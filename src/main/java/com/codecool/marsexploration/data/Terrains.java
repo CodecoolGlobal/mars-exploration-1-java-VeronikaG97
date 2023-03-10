@@ -5,8 +5,9 @@ public enum Terrains {
     PITS('#');
 
     char terrain;
+
     Terrains(char terrain) {
-        this.terrain=terrain;
+        this.terrain = terrain;
     }
 
     public char getTerrain() {

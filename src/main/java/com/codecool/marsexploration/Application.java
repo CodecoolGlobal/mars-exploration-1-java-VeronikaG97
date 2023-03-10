@@ -45,7 +45,8 @@ public class Application {
                 bigEmptyMapGenerator,
                 new ElementGenerator());
 
-        List<MapElement> allMapElements = mapGenerator.generateMap();
+        List<MapElement> allMapElements = mapGenerator.generateMaps();
+
         BigMapAssembler bigMapAssembler = new BigMapAssembler(bigEmptyMapGenerator.getBigMap(), allMapElements);
         bigMapAssembler.assemble();
 

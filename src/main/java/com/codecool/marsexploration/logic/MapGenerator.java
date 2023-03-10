@@ -2,7 +2,6 @@ package com.codecool.marsexploration.logic;
 
 import com.codecool.marsexploration.data.Configuration;
 import com.codecool.marsexploration.data.MapElement;
-import com.codecool.marsexploration.logic.assembler.BigMapAssembler;
 import com.codecool.marsexploration.logic.generators.BigEmptyMapGenerator;
 import com.codecool.marsexploration.logic.generators.CreateMap;
 
@@ -25,7 +24,7 @@ public class MapGenerator {
         this.generator = generator;
     }
 
-    public List<MapElement> generateMap() {
+    public List<MapElement> generateMaps() {
         List<MapElement> mountainElements = generator.createSmallRandomMap(configurationMountain);
         List<MapElement> pitsElements = generator.createSmallRandomMap(configurationPits);
         List<MapElement> emptyElements = generator.createSmallEmptyMap(configurationPits.smallMapSize(), configurationPits.numberOfSmallMaps());
